@@ -12,6 +12,8 @@ def eligibility_check
     render json: {message: message} 
   end
 
+
+  
   def appointment_review_processor
     user = User.find_by_id(params[:user_id])
     if user.nil?
