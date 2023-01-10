@@ -11,3 +11,15 @@ def eligibility_check
     end
     render json: {message: message} 
   end
+
+  def appointment_review_processor
+    user = User.find_by_id(params[:user_id])
+    if user.nil?
+      message = "User not found."
+    else
+        appointment_review_processor = AppointmentReviewProcessor.new
+        appointment_review_processor.process_for_patient(user)
+        message = "Appointment review processor successfully run for #{user.username}."
+    end
+    render json: {message: message} 
+  end
