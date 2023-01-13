@@ -10,12 +10,12 @@ def add_claim
     end
 
     def create_claim
-      users_last_completed_appointment =  CustAppointment.where(user_id:params[:user_id], appointment_status_id: 2).order("end_time").last
-      if users_last_completed_appointment.nil?
-        message = "User doesn't have any completed appointmetns yet."
-      else
+      appt = CustAppointment.find_by_id(params[:cust_appointment_id])
+      if appt.exists?
         claim = Payments::Claim.create(user_id:params[:user_id], date_of_service: users_last_completed_appointment.end_time.to_date, cust_appointment_id: users_last_completed_appointment.id, patient_balance: 33.00, claim_status: "READY_TO_CHARGE_PR", athena_api_log_id:7199777)
         message = "Claim successfully created."
+      else
+        message = "User doesn't have any completed appointmetns yet."
       end
       render json: {message: message}
     end
