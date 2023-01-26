@@ -5,7 +5,7 @@ def remove_active_lab_appointment
         message = "Lab appointment is successfully deleted?"
     else
         message = "No lab appt related to this appointment"
-
     end
+    render json: {message: message} 
     
 end
