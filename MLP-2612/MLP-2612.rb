@@ -10,3 +10,5 @@ def remove_active_lab_appointment
     end
     render json: {message: message} 
 end
+
+trigger notifications
