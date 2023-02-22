@@ -12,3 +12,4 @@ def remove_active_lab_appointment
 end
 
 trigger notifications
+how to get data before stream 
