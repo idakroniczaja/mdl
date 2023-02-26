@@ -11,5 +11,7 @@ def remove_active_lab_appointment
     render json: {message: message} 
 end
 
-trigger notifications
+<% trigger notifications
 how to get data before stream 
+trigger notifications: check a
+how to get data before stream
